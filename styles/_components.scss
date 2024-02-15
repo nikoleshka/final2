@@ -1,6 +1,6 @@
 body {
   width: 100%;
-  
+
   // padding: $spacer * 2 $spacer * 8;
 }
 header {
@@ -22,7 +22,7 @@ header {
 
     > .nav-list {
       @include row($spacer, space-between, center);
-     
+
       > li > a {
         padding-bottom: 3px;
         position: relative;
@@ -255,7 +255,7 @@ header {
 //....
 .about-me-section {
   // box-shadow: 0px 36px 34px 8px rgba(0,0,0,0.1);
-  height: 120vh;
+  min-height: 120vh;
   // margin-top: 50px;
   @include column($spacer, flex-start, center);
   padding: $spacer * 7 $spacer * 8;
@@ -288,7 +288,7 @@ header {
   > .grid-container {
     margin: 30px 0;
     display: grid;
-    height: 70vh;
+    min-height: 70vh;
     grid-template-columns: repeat(3, 9fr);
     grid-template-rows: repeat(2, 2fr);
 
@@ -341,7 +341,6 @@ header {
           transform: scaleX(1);
         }
       }
-
       &:hover {
         background: rgba(255, 255, 255, 0.01);
         border-radius: 16px;
@@ -388,6 +387,76 @@ header {
     }
   }
 }
+@media screen and (max-width: 871px) {
+  .about-me-section {
+    > .grid-container {
+      grid-template-columns: repeat(2, 5fr);
+      grid-template-rows: repeat(3, 9fr);
+      > .one {
+        grid-column: 1 / 2;
+        grid-row: 1/2;
+      }
+      > .two {
+        grid-column: 2 / 3;
+        grid-row: 1/2;
+      }
+      > .three {
+        grid-column: 1 / 2;
+        grid-row: 2/3;
+        gap: 58px;
+      }
+      > .four {
+        grid-column: 2 / 3;
+        grid-row: 2/3;
+      }
+      > .five {
+        grid-column: 1 / 2;
+        grid-row: 3/4;
+      }
+      > .six {
+        grid-column: 2 / 3;
+        grid-row: 3/4;
+      }
+    }
+  }
+}
+@media screen and (max-width: 624px) {
+  .about-me-section {
+    > .grid-container {
+      grid-template-columns: repeat(1, 5fr);
+      grid-template-rows: repeat(6, 5fr);
+      gap: 40px;
+      > div {
+        padding: 20px;
+      }
+      > .one {
+        grid-column: 1 / 2;
+        grid-row: 1/2;
+      }
+      > .two {
+        grid-column: 1 / 2;
+        grid-row: 2/3;
+      }
+      > .three {
+        grid-column: 1 / 2;
+        grid-row: 3/4;
+        gap: 58px;
+      }
+      > .four {
+        grid-column: 1 / 2;
+        grid-row: 4/5;
+      }
+      > .five {
+        grid-column: 1 / 2;
+        grid-row: 5/6;
+      }
+      > .six {
+        grid-column: 1 / 2;
+        grid-row: 6/7;
+      }
+    }
+  }
+}
 .projects-sec {
   border-radius: 3px;
   background-color: #1f2544;
@@ -401,7 +470,7 @@ header {
       font-weight: 400;
       color: #ff731d;
       z-index: -100;
-margin-top: 100px;
+      margin-top: 100px;
       margin-bottom: 10px;
     }
     h4 {
@@ -448,7 +517,6 @@ margin-top: 100px;
     }
     .container {
       position: relative;
-      // width: 50%;
       height: 360px;
     }
     .middle {
@@ -491,32 +559,215 @@ margin-top: 100px;
     }
   }
 }
+@media screen and (max-width: 912px) {
+  .projects-sec {
+    > .projects-pre-info {
+      h3 {
+        font-size: 120px;
+        text-shadow: 9px -2px 1px rgb(58, 91, 160);
+      }
+      h4 {
+        font-size: $spacer * 3;
+      }
+    }
+    > .project-wrapper {
+      align-items: center;
+
+      a {
+        &:where(.reverse) {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+        @include column($spacer * 2, center, center);
+        > .info {
+          > p,
+          > h4 {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 550px) {
+  .projects-sec {
+    > .projects-pre-info {
+      h3 {
+        font-size: 80px;
+      }
+    }
+    .info-project {
+      img {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  }
+}
+.client-sec {
+  background-color: $background_color;
+  padding: 5% 15%;
+  @include column($spacer * 13, space-between);
+
+  > .client-intro {
+    margin: 0 auto;
+    margin-top: 115px;
+    @include column($spacer * 3, space-between, center);
+    > h2 {
+      color: $primary_color;
+      font-size: 50px;
+      font-weight: 900;
+      -webkit-text-stroke: 1px $main_text_color;
+      text-shadow: 6px 6px 2px rgba(12, 45, 87, 0.91);
+    }
+    > h5 {
+      color: $main_text_color;
+    }
+  }
+
+  > .clients-wrapper {
+    min-height: 100vh;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    > .slider {
+      @include grid();
+      grid-auto-columns: calc((100% / 3) - 12px);
+      overflow-x: hidden;
+      height: 470px;
+      // width: 90vw;
+      margin: 0 auto;
+      scroll-behavior: smooth;
+    }
+
+    .client {
+      cursor: pointer;
+      height: 420px;
+      margin: 0 auto;
+      background-color: white;
+      -webkit-box-shadow: 1px 5px 47px -1px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 1px 5px 47px -1px rgba(0, 0, 0, 0.75);
+      box-shadow: 6px -5px 16px 0px rgba(0, 0, 0, 0.75);
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+
+      > .img {
+        padding-top: 5px;
+        padding-bottom: 10px;
+        background-color: #1f2544;
+        width: 100%;
+        height: 45%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0% 100% 0% 100% / 39% 0% 100% 61%;
+        overflow: hidden;
+
+        > img {
+          width: 140px;
+          height: 140px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+
+      > .client-info {
+        height: 55%;
+        background-color: $primary_color;
+        border-radius: 0% 100% 0% 100% / 100% 53% 47% 0%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        > h3 {
+          color: #082142;
+        }
+
+        > p {
+          max-width: 90%;
+          text-align: center;
+          font-size: 17px;
+          color: #100760;
+        }
+      }
+    }
+
+    > i {
+      width: 50px;
+      height: 50px;
+      background-color: $main_text_color;
+      color: $primary_color;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      position: absolute;
+      font-weight: 900;
+      top: 30%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+
+      &:first-child {
+        left: -55px;
+      }
+
+      &:last-child {
+        right: -55px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1270px) {
+    .clients-wrapper > .slider {
+      grid-auto-columns: calc((100% / 2) - 9px);
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .clients-wrapper > .slider {
+      grid-auto-columns: 100%;
+    }
+  }
+}
+
 .blog-sec {
   background-color: #f3ebdc;
   width: 100vw;
   min-height: 130vh;
   padding: $spacer * 2.5 $spacer * 8;
   padding-bottom: 170px;
-  > h2 {
-    color: #513252;
-    font-size: 100px;
-    width: 23%;
-    margin: 40px auto;
-    margin-top: 105px;
+  > .blog-intro {
+    @include column($spacer, center, center);
+    > h2 {
+      color: #513252;
+      font-size: 100px;
+
+      margin: 40px auto;
+      margin-top: 105px;
+    }
+    > h5 {
+      font-size: 30px;
+      color: $secondary_color;
+      text-align: center;
+    }
   }
-  > h5 {
-    font-size: 30px;
-    color: $secondary_color;
-    width: 70%;
-    margin: 0 auto;
-  }
+
   > .article-container {
     margin: 70px 0;
-    @include row($spacer * 2, space-around, flex-start);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+
     > article {
       height: 100%;
-      width: 30%;
+
       padding: 20px;
+      flex: 1 1 30%;
 
       > a {
         @include column($spacer * 3, flex-start, center);
@@ -579,6 +830,14 @@ margin-top: 100px;
     }
   }
 }
+@media screen and (max-width: 910px) {
+  .article-container {
+    > article {
+      flex: 1 1 0;
+      max-width: 100%;
+    }
+  }
+}
 .footer {
   background-color: $main_text_color;
   padding: $spacer * 8 $spacer * 8;
@@ -608,6 +867,11 @@ margin-top: 100px;
         i {
           font-size: 22px;
           color: #fc6736;
+          transition: 0.9s;
+          transform: rotateY(0);
+          &:hover {
+            transform: rotateY(180deg);
+          }
         }
       }
     }
@@ -640,5 +904,10 @@ margin-top: 100px;
     .me {
       color: $primary_color;
     }
+  }
+}
+@media screen and (max-width: 975px) {
+  .footer > .cont-1 {
+    @include column($spacer * 6);
   }
 }
